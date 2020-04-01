@@ -13,17 +13,6 @@ router.get ("/", (req,res) => {
 
 });
 
-router.get("/:surname",(req,res) =>{
-    const promise = Player.findOne({surname: req.params.surname});
-    promise
-        .then(player => {
-            res.json ({ succes: true, player});
-        })
-        .catch(err => {
-            res.json({ succes: false, message: "Oyuncu Bulunamadı!!!",err});
-        });
-});
-
 router.put("/:id",(req,res) => {
     Player.findByIdAndUpdate(
         {
